@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">RedditApp</string>
+    <string name="reddit_text">Reddit text </string>
+    <string name="test_num">10</string>
 </resources>
