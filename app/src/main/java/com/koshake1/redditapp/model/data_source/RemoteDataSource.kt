@@ -4,4 +4,5 @@ import com.koshake1.redditapp.model.data.RedditResponse
 
 interface RemoteDataSource {
     suspend fun getRedditData() : RedditResponse
+    suspend fun getRedditDataByAfter(after : String) : RedditResponse
 }

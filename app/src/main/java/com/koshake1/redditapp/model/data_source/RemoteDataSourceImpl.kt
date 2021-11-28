@@ -6,4 +6,6 @@ class RemoteDataSourceImpl(private val apiService: ApiService) : RemoteDataSourc
     override suspend fun getRedditData() =
         apiService.getHotData().await()
 
+    override suspend fun getRedditDataByAfter(after: String) =
+        apiService.getHotAfterData(after).await()
 }
