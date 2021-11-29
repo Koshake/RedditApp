@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
         navigateTo(MainFragment.newInstance())
     }
 
-    fun navigateTo(fragment: Fragment) {
+    private fun navigateTo(fragment: Fragment) {
         supportFragmentManager
             .beginTransaction()
             .replace(R.id.container, fragment)

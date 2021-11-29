@@ -4,8 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.paging.CombinedLoadStates
+import androidx.paging.LoadState
 import com.koshake1.redditapp.R
 import com.koshake1.redditapp.databinding.FragmentMainBinding
 import com.koshake1.redditapp.view.adapter.RedditAdapter
@@ -48,6 +51,11 @@ class MainFragment : Fragment(R.layout.fragment_main) {
             mainViewModel.fetchData().distinctUntilChanged().collectLatest {
                 adapter.submitData(it)
             }
+        }
+
+        adapter.addLoadStateListener { state : CombinedLoadStates ->
+            binding.mainRecycler.isVisible = state.refresh != LoadState.Loading
+            binding.progress.isVisible = state.refresh == LoadState.Loading
         }
     }
 

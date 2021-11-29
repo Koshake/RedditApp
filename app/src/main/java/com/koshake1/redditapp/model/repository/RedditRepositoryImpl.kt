@@ -9,12 +9,6 @@ import kotlinx.coroutines.flow.Flow
 import paging.PagingSource
 
 class RedditRepositoryImpl(private val dataSource: RemoteDataSource) : RedditRepository {
-    override suspend fun getRedditData() =
-        dataSource.getRedditData()
-
-    override suspend fun getRedditDataByAfter(after: String) =
-        dataSource.getRedditDataByAfter(after)
-
     override fun createDataFlow(pagingConfig: PagingConfig): Flow<PagingData<Children>> {
         return Pager(
             config = pagingConfig,
